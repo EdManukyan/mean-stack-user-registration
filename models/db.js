@@ -7,3 +7,5 @@ mongoose.connect(process.env.MONGODB_URI, (error) => {
         console.log('Connection failed' + JSON.stringify(error, undefined, 2));
     }
 });
+
+require('./user.model');
