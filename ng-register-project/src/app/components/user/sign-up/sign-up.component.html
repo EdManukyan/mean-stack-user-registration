@@ -1,0 +1,45 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content">
+        <div class="row">
+          <form [formGroup]="registerForm" class="col s12">
+            <div class="row">
+              <div class="row">
+                <div class="input-field col s12">
+                  <input formControlName="fullName" placeholder="Enter your name" id="full-name" type="text"
+                         class="validate">
+                  <label for="full-name">Full Name</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input formControlName="email" placeholder="Enter your email" id="email" type="email"
+                         class="validate">
+                  <label for="email">Email</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input formControlName="password" placeholder="Enter your password" id="password" type="password"
+                         class="validate">
+                  <label for="password">Password</label>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="card-action">
+          <div *ngIf="showSuccessMessage" class="chip">
+            User submitted
+          </div>
+          <div *ngIf="errorMessages" class="chip danger">
+            {{errorMessages}}
+          </div>
+      </div>
+        <button (click)="submitUserForm()" [disabled]="!registerForm.valid" class="waves-effect waves-light btn">Sign Up</button>
+      </div>
+    </div>
+  </div>
+</div>
+
