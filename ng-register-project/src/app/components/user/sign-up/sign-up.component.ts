@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from "../../../shared/services/user.service";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
-import {filter} from "rxjs/operators";
+import {filter, take} from "rxjs/operators";
 
 @Component({
   selector: 'app-sign-up',
@@ -35,7 +35,7 @@ export class SignUpComponent implements OnInit {
   public submitUserForm() {
     const formValues = this.registerForm.value;
     this._userService.postUser(formValues)
-      .pipe(filter(data => !!data))
+      .pipe(filter(data => !!data), take(1))
       .subscribe(data => {
           this.showSuccessMessage = true;
           this.resetForm();
